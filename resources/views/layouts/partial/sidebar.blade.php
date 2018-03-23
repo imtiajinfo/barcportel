@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/course*') ? 'navigation__active' : '' }}">
-                    <a href="{{ route('admin.course.index') }}">
+                    <a href="{{ route('course.index') }}">
                         <i class="zmdi zmdi-apps"></i> Course
                     </a>
                 </li>

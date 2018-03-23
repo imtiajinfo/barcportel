@@ -56,6 +56,7 @@
                 </div>
 
                 <section class="content">
+                    @include('layouts.partial.msg')
                     @yield('content')
 
                     @include('layouts.partial.footer')

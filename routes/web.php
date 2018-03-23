@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
 //    Course
-    Route::get('/course','CourseController@index')->name('admin.course.index');
+    Route::resource('/course','CourseController');
 });
 
 Route::group(['prefix'=>'student','namespace'=>'Student','middleware'=>['auth','student']], function (){

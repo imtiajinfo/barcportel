@@ -24,7 +24,6 @@
             {{--</div>--}}
         {{--</div>--}}
     {{--</header>--}}
-
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">All Courses</h4>
@@ -38,7 +37,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Update At</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -47,7 +46,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Update At</th>
-                        <th>Action</th>
+                        <th class="text-center">Action</th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -56,8 +55,26 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $course->name }}</td>
                                 <td>{{ $course->description }}</td>
-                                <td>{{ $course->update_at }}</td>
-                                <td>Acrtion</td>
+                                <td>{{ $course->updated_at }}</td>
+                                <td class="text-right">
+                                    <button class="btn btn-primary btn--icon-text">
+                                        <i class="zmdi zmdi-home"></i>Show</button>
+
+                                    <button class="btn btn-info btn--icon-text">
+                                        <i class="zmdi zmdi-edit"></i>Edit</button>
+
+                                    <button class="btn btn-danger btn--icon-text" 
+                                                onclick="if(confirm('Are you sure? You want to delete this?')){
+                                                    event.preventDefault; document.getElementById('delete-form-{{ $course->id }}').submit();
+                                                }else{
+                                                    event.preventDefault;
+                                                }">
+                                        <i class="zmdi zmdi-delete"></i>Delete</button>
+                                    <form id="delete-form-{{ $course->id }}" method="POST" action="{{ route('course.destroy',$course->id) }}" style="display:none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
