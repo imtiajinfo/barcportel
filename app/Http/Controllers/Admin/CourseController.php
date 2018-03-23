@@ -26,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.course.create');
     }
 
     /**
@@ -36,8 +36,19 @@ class CourseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $this->validate($request,[
+            "name" => "required|min:2",
+        ]);
+
+        $course = new Course();
+        $course->name = $request->name;
+        $course->slug = str_slug($request->name);
+        $course->description = $request->description;
+        $course->save();
+        return redirect(route('course.index'))->with('successMsg','Course Successfully Added :)');
+
+
     }
 
     /**
@@ -59,7 +70,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.course.edit', compact('course'));
     }
 
     /**
@@ -71,7 +82,16 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+         $this->validate($request,[
+            "name" => "required|min:2",
+        ]);
+
+        $course = Course::find($course->id);
+        $course->name = $request->name;
+        $course->slug = str_slug($request->name);
+        $course->description = $request->description;
+        $course->save();
+        return redirect(route('course.index'))->with('successMsg','Course Successfully Updated :)');
     }
 
     /**

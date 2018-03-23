@@ -7,23 +7,9 @@
 @endpush
 
 @section('content')
-    {{--<header class="content__title">--}}
-        {{--<h1>DATA TABLES</h1>--}}
-
-        {{--<div class="actions">--}}
-            {{--<a href="#" class="actions__item zmdi zmdi-trending-up"></a>--}}
-            {{--<a href="#" class="actions__item zmdi zmdi-check-all"></a>--}}
-
-            {{--<div class="dropdown actions__item">--}}
-                {{--<i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>--}}
-                {{--<div class="dropdown-menu dropdown-menu-right">--}}
-                    {{--<a href="#" class="dropdown-item">Refresh</a>--}}
-                    {{--<a href="#" class="dropdown-item">Manage Widgets</a>--}}
-                    {{--<a href="#" class="dropdown-item">Settings</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</header>--}}
+    <header class="content__title">
+        <a href="{{ route('course.create') }}" class="btn btn-info">Create Course</a>
+    </header>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">All Courses</h4>
@@ -60,8 +46,8 @@
                                     <button class="btn btn-primary btn--icon-text">
                                         <i class="zmdi zmdi-home"></i>Show</button>
 
-                                    <button class="btn btn-info btn--icon-text">
-                                        <i class="zmdi zmdi-edit"></i>Edit</button>
+                                    <a class="btn btn-info btn--icon-text" href="{{ route('course.edit',$course->id) }}">
+                                        <i class="zmdi zmdi-edit"></i>Edit</a>
 
                                     <button class="btn btn-danger btn--icon-text" 
                                                 onclick="if(confirm('Are you sure? You want to delete this?')){
