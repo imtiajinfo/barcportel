@@ -10,7 +10,7 @@
 
     <title>@yield('title') - Barc Portel</title>
 
-
+    <link rel="icon" href="{{ asset('img/logo-barc.png') }}">
     <!-- Vendor styles -->
     <link rel="stylesheet" href="{{ asset('vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/bower_components/animate.css/animate.min.css') }}">

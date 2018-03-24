@@ -19,7 +19,7 @@ class CreateUnitsTable extends Migration
             $table->integer('course_id');
             $table->string('name');
             $table->string('slug');
-            $table->text('description');
+            $table->text('description')->nullable();;
             $table->timestamps();
         });
     }

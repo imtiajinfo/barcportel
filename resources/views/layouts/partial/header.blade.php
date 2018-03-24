@@ -4,7 +4,7 @@
     </div>
 
     <div class="logo hidden-sm-down">
-        <h1><a href="index-2.html">BARC PORTEL</a></h1>
+        <h1><a href="index-2.html">BARC PORTAL</a></h1>
     </div>
 
     <form class="search">

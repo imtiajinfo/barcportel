@@ -1,5 +1,5 @@
 <footer class="footer hidden-xs-down">
-    <p>© Super Admin Responsive. All rights reserved.</p>
+    <p>© British American Resources Center(BARC). All rights reserved.</p>
 
     <ul class="nav footer__nav">
         <a class="nav-link" href="#">Homepage</a>
