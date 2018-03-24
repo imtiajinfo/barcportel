@@ -8,6 +8,6 @@ class Lesson extends Model
 {
     public function unit()
     {
-        return $this->hasMany('App\Lesson');
+        return $this->belongsTo('App\Unit');
     }
 }

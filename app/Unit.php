@@ -10,4 +10,9 @@ class Unit extends Model
     {
         return $this->hasMany('App\Lesson');
     }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }

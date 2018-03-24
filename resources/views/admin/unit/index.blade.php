@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Course')
+@section('title','Unit')
 
 @push('css')
 
@@ -8,11 +8,12 @@
 
 @section('content')
     <header class="content__title">
-        <a href="{{ route('course.create') }}" class="btn btn-info">Create Course</a>
+        <a href="{{ route('course.index') }}" class="btn btn-info">Back to Course</a>
+        <a href="{{ route('unit.create',$course) }}" class="btn btn-info">Create Unit</a>
     </header>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">All Courses</h4>
+            <h4 class="card-title">All Unit</h4>
             {{--<h6 class="card-subtitle"></h6>--}}
 
             <div class="table-responsive">
@@ -22,6 +23,7 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Course Name</th>
                             <th>Update At</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -31,32 +33,34 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Course Name</th>                        
                         <th>Update At</th>
                         <th class="text-center">Action</th>
                     </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($courses as $key=>$course)
+                        @foreach($units as $key=>$unit)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $course->name }}</td>
-                                <td>{{ $course->description }}</td>
-                                <td>{{ $course->updated_at }}</td>
+                                <td>{{ $unit->name }}</td>
+                                <td>{{ $unit->description }}</td>
+                                <td>{{ $unit->course->name }}</td>
+                                <td>{{ $unit->updated_at }}</td>
                                 <td class="text-right">
-                                <a href="{{ route('unit.index',$course->id) }}" class="btn btn-primary btn--icon-text">
-                                        <i class="zmdi zmdi-eye"></i>Show Unit</a>
+                                    <a href="{{ route('lesson.index',['course'=>$course,'unit'=>$unit->id]) }}" class="btn btn-primary btn--icon-text">
+                                        <i class="zmdi zmdi-eye"></i>Show Lesson</a>
 
-                                    <a class="btn btn-info btn--icon-text" href="{{ route('course.edit',$course->id) }}">
+                                    <a class="btn btn-info btn--icon-text" href="{{ route('unit.edit',['course'=>$course,'unit'=>$unit->id]) }}">
                                         <i class="zmdi zmdi-edit"></i>Edit</a>
 
                                     <button class="btn btn-danger btn--icon-text" 
                                                 onclick="if(confirm('Are you sure? You want to delete this?')){
-                                                    event.preventDefault; document.getElementById('delete-form-{{ $course->id }}').submit();
+                                                    event.preventDefault; document.getElementById('delete-form-{{ $unit->id }}').submit();
                                                 }else{
                                                     event.preventDefault;
                                                 }">
                                         <i class="zmdi zmdi-delete"></i>Delete</button>
-                                    <form id="delete-form-{{ $course->id }}" method="POST" action="{{ route('course.destroy',$course->id) }}" style="display:none;">
+                                    <form id="delete-form-{{ $unit->id }}" method="POST" action="{{ route('unit.destroy',['course'=>$course,'unit'=>$unit->id]) }}" style="display:none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>

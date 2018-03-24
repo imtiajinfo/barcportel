@@ -23,6 +23,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admi
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
 //    Course
     Route::resource('/course','CourseController');
+    Route::resource('course/{course}/unit','UnitController');
+    Route::resource('/course/{course}/unit/{unit}/lesson','LessonController');
 });
 
 Route::group(['prefix'=>'student','namespace'=>'Student','middleware'=>['auth','student']], function (){
